@@ -29,7 +29,7 @@ function Admin() {
 }
 
   React.useEffect(() => {
-    axios.get(process.env.Back_URL +'/users/current-user', { withCredentials: true })
+    axios.get(process.env.REACT_APP_Back_URL +'/users/current-user', { withCredentials: true })
     .then(response =>{
       setCurrentUser(response.data)
       console.log(response.data)
@@ -39,13 +39,6 @@ function Admin() {
   return (
     <div>
         <NavBar disconnect={disconnect}/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
         <br/>
         <Stack direction="row" justifyContent="center" alignItems="center">
           <Button variant="contained" onClick={goToReservations} style={{

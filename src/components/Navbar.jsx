@@ -14,7 +14,7 @@ const PrimarySearchAppBar = ({ totalItems , disconnect}) => {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    axios.get(process.env.Back_URL+'/users/current-user', { withCredentials: true })
+    axios.get(process.env.REACT_APP_Back_URL+'/users/current-user', { withCredentials: true })
     .then(response =>{
       setCurrentUser(response.data)
       console.log(response.data)

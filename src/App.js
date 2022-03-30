@@ -15,7 +15,7 @@ import Admin from './components/Admin';
 function App() {
   const [products, setProducts] = useState();
   const [cartItems, setCartItems] = useState([]);
-
+  console.log(products)
   
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.idProduct === product.idProduct);
@@ -43,13 +43,15 @@ function App() {
   };
 
   const fetchProducts = async () => {
-    await axios.get(process.env.Back_URL+'/products/all', { withCredentials: true })
-    .then((response)=> setProducts(response.data));
+    axios
+      .get(`${process.env.REACT_APP_Back_URL}'/products/all'`, { withCredentials: true })
+      .then((response)=> setProducts(response.data))
+      .catch((error) => {console.log("Echec de la récupération des produits. Url : " + process.env.REACT_APP_Back_URL+'/products/all')});
   };
 
   useEffect(() => {
     fetchProducts();
-    }, []);
+  }, []);
 
   return (
     <div className="App">

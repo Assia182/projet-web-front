@@ -10,7 +10,7 @@ export default function Basket(props) {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    axios.get(process.env.Back_URL +'/users/current-user', { withCredentials: true })
+    axios.get(process.env.REACT_APP_Back_URL +'/users/current-user', { withCredentials: true })
     .then((response) =>{
       setCurrentUser(response.data)
     }).catch((e) => console.log(e.request))
@@ -32,7 +32,7 @@ export default function Basket(props) {
     axios({
       method: "POST",
       mode : 'cors',
-      url: process.env.Back_URL + "/reservations/create",
+      url: process.env.REACT_APP_Back_URL + "/reservations/create",
       data: {
         dateReservation : today,
         retrieveDate : retrieveDate,
