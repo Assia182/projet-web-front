@@ -33,7 +33,8 @@ const Login = () =>{
         axios({
             method: "POST",
             mode : 'cors',
-            url: process.env.REACT_APP_Back_URL + "/users/sign-in",
+            url: 'https://cors-anywhere.herokuapp.com/http://beaute-de-lorient-back.herokuapp.com'
+            + "/users/sign-in",
             data: {
               emailUser : email,
               passwordUser : password
