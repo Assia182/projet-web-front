@@ -43,7 +43,7 @@ function App() {
   };
 
   const fetchProducts = async () => {
-    await axios.get('http://localhost:8000/products/all', { withCredentials: true })
+    await axios.get(process.env.Back_URL+'/products/all', { withCredentials: true })
     .then((response)=> setProducts(response.data));
   };
 

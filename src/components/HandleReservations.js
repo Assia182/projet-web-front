@@ -24,7 +24,7 @@ function HandleReservations() {
     axios({
         method: "POST",
         mode : 'cors',
-        url: "http://localhost:8000/users/logout",
+        url: process.env.Back_URL + "users/logout",
         withCredentials : true
       }).then(()=>{
         navigate("/");
@@ -39,7 +39,7 @@ function HandleReservations() {
 
     function handleAttente(){
 
-      axios.patch('http://localhost:8000/reservations/' + currentId, {
+      axios.patch(process.env.Back_URL + 'reservations/' + currentId, {
         reservationStateNameReservationState : 'En attente'
       })
       .then((res) => console.log("res.data"))
@@ -47,7 +47,7 @@ function HandleReservations() {
 
     function handleTerminee(){
 
-      axios.patch('http://localhost:8000/reservations/' + currentId, {
+      axios.patch( process.env.Back_URL + 'reservations/' + currentId, {
         reservationStateNameReservationState: 'Terminée'
       })
       .then((res) => console.log("res.data"))
@@ -55,12 +55,12 @@ function HandleReservations() {
     }
 
 const fetchReservations = async () => {
-    await axios.get('http://localhost:8000/reservations/all', { withCredentials: true })
+    await axios.get(+'reservations/all', { withCredentials: true })
     .then((response)=> setReservations(response.data));
 };
 
 React.useEffect(() => {
-    axios.get('http://localhost:8000/users/current-user', { withCredentials: true })
+    axios.get(process.env.Back_URL + '/users/current-user', { withCredentials: true })
     .then(response =>{
       setCurrentUser(response.data)
       console.log(response.data)

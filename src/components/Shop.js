@@ -16,7 +16,7 @@ function Shop({countCartItems, products, onAdd, cartItems, onRemove}) {
     axios({
         method: "POST",
         mode : 'cors',
-        url: "http://localhost:8000/users/logout",
+        url: process.env.Back_URL +"/users/logout",
         withCredentials : true
       }).then(()=>{
         navigate("/");
@@ -26,7 +26,7 @@ function Shop({countCartItems, products, onAdd, cartItems, onRemove}) {
 const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    axios.get('http://localhost:8000/users/current-user', { withCredentials: true })
+    axios.get(process.env.Back_URL+'/users/current-user', { withCredentials: true })
     .then(response =>{
       setCurrentUser(response.data)
       console.log(response.data)

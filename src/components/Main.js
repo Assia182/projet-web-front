@@ -10,7 +10,7 @@ export default function Main(props) {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    axios.get('http://localhost:8000/users/current-user', { withCredentials: true })
+    axios.get(process.env.Back_URL+'/users/current-user', { withCredentials: true })
     .then(response =>{
       setCurrentUser(response.data)
       console.log(response.data)
